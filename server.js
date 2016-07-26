@@ -71,6 +71,7 @@ function addOrUpdateObject(dataSnapshot) {
       throw err;
     }
     console.log('Firebase<>Algolia object saved');
+    console.log(jfdjhfa);
   });
 }
 
