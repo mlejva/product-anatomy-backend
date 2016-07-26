@@ -42,7 +42,7 @@ var fb = firebase.database().ref(FIREBASE_DATABASE_REF);
 
 // Console logs
 console.log('==============\n');
-console.log('Node.js server initialization complete\n');
+console.log('Node.js server initialization complete');
 console.log('==============\n');
 console.log('Listening to changes:');
 /* ---------- */
@@ -72,6 +72,7 @@ function addOrUpdateObject(dataSnapshot) {
     }
     console.log('Firebase<>Algolia object saved');
     console.log(jfdjhfa);
+    bla.hell();
   });
 }
 
