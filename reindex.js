@@ -1,3 +1,4 @@
+//war
 /*
 // Get all data from Firebase
 fb.on('value', reindexIndex);
