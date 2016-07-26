@@ -10,17 +10,21 @@
 
 
 /* ----- Constants ----- */
+
+
+const ALGOLIA_API_KEY = process.env.ENV_ALGOLIA_API_KEY; // TODO heroku config
+const ALGOLIA_APP_ID = 'E6GMBD7AHH'; // TODO heroku config
+const ALGOLIA_INDEX = 'products'; // TODO heroku config
+
+const FIREBASE_DATABASE_REF = '/products';
 var firebaseConfig = { // TODO heroku config
-  apiKey: 'AIzaSyBJf4MX7uWsGQfoleAnoj7T2vg5boS1FUs',
+  apiKey: process.env.ENV_FIREBASE_API_KEY,
   authDomain: 'product-anatomy.firebaseapp.com',
   databaseURL: 'https://product-anatomy.firebaseio.com',
   storageBucket: 'product-anatomy.appspot.com'
 };
 
-const DATABASE_REF = '/products';
-const ALGOLIA_API_KEY = '4df563526d2a6c5f0adbc0273beb3427'; // TODO heroku config
-const ALGOLIA_APP_ID = 'E6GMBD7AHH'; // TODO heroku config
-const ALGOLIA_INDEX = 'products'; // TODO heroku config
+
 /* ---------- */
 
 
@@ -33,7 +37,7 @@ var index = client.initIndex(ALGOLIA_INDEX);
 
 firebase.initializeApp(firebaseConfig);
 
-var fb = firebase.database().ref(DATABASE_REF);
+var fb = firebase.database().ref(FIREBASE_DATABASE_REF);
 
 
 // Console logs
