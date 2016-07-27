@@ -56,6 +56,7 @@ fb.on('child_changed', addOrUpdateObject);
 fb.on('child_removed', removeIndex);
 
 
+ 
 // Event functions
 function addOrUpdateObject(dataSnapshot) {
   // Get Firebase object
