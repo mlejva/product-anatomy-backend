@@ -42,9 +42,10 @@ var fb = firebase.database().ref(FIREBASE_DATABASE_REF);
 
 // Console logs
 console.log('==============\n');
-console.log('Node.js server initialization complete');
+console.log('Node.js server\n');
 console.log('==============\n');
-console.log('Listening to changes:');
+console.log('INITIALIZATION COMPLETE\n');
+console.log('Listening to changes:\n');
 /* ---------- */
 
 
@@ -61,8 +62,7 @@ fb.on('child_removed', removeIndex);
 function addOrUpdateObject(dataSnapshot) {
   // Get Firebase object
   var firebaseObject = dataSnapshot.val();
-  console.log('On Event: Child added or changed');
-
+  console.log("initial child_added problem");
   // Specify Algolia's objectID using the Firebase object key
   firebaseObject.objectID = dataSnapshot.key;
 
@@ -71,22 +71,18 @@ function addOrUpdateObject(dataSnapshot) {
     if (err) {
       throw err;
     }
-    console.log('Firebase<>Algolia object saved');
   });
 }
 
 function removeIndex(dataSnapshot) {
   // Get Algolia's objectID from the Firebase object key
   var objectID = dataSnapshot.key;
-  console.log('On Event: Child removed');
 
   // Remove the object from Algolia
   index.deleteObject(objectID, function(err, content) {
     if (err) {
       throw err;
     }
-
-    console.log('Firebase<>Algolia object deleted');
   });
 }
 /* ---------- */
