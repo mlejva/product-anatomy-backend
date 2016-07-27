@@ -2,16 +2,13 @@
 // Algolia indexation node.js server
 // =============================================================================
 
-// To REINDEX DATABASE run:         database (--database database-ref) reindex
+// To REINDEX DATABASE
 
-// To IMPORT EXISTING DATA run:     database (--database database-ref) import
+// To IMPORT EXISTING DATA
 
-// To CHANGE DATABASE TO LISTEN TO: database change database-ref
 
 
 /* ----- Constants ----- */
-
-
 const ALGOLIA_API_KEY = process.env.ENV_ALGOLIA_API_KEY; // TODO heroku config
 const ALGOLIA_APP_ID = 'E6GMBD7AHH'; // TODO heroku config
 const ALGOLIA_INDEX = 'products'; // TODO heroku config
@@ -23,8 +20,6 @@ var firebaseConfig = { // TODO heroku config
   databaseURL: 'https://product-anatomy.firebaseio.com',
   storageBucket: 'product-anatomy.appspot.com'
 };
-
-
 /* ---------- */
 
 
@@ -41,11 +36,9 @@ var fb = firebase.database().ref(FIREBASE_DATABASE_REF);
 var newItems = false;
 
 // Console logs
-console.log('==============\n');
-console.log('Node.js server\n');
-console.log('==============\n');
-console.log('INITIALIZATION COMPLETE\n');
-console.log('Listening to changes:\n');
+console.log('=================================\n');
+console.log('Algolia indexation node.js server\n');
+console.log('=================================');
 /* ---------- */
 
 
@@ -56,10 +49,13 @@ fb.on('child_added', addOrUpdateObject);
 fb.on('child_changed', addOrUpdateObject);
 fb.on('child_removed', removeIndex);
 
+// Load the firebase database once on start, to prevent reindexation of existing data at algolia
 fb.once('value', function(dataSnapshot) {
-  console.log('Initial data indexation skipped.');
+  console.log('Initial data indexation skipped');
   newItems = true;
 });
+
+
 
 // Event functions
 function addOrUpdateObject(dataSnapshot) {
@@ -67,7 +63,6 @@ function addOrUpdateObject(dataSnapshot) {
 
   // Get Firebase object
   var firebaseObject = dataSnapshot.val();
-  console.log("initial child_added problem");
   // Specify Algolia's objectID using the Firebase object key
   firebaseObject.objectID = dataSnapshot.key;
 
