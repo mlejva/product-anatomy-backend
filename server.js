@@ -56,7 +56,7 @@ fb.on('child_changed', addOrUpdateObject);
 fb.on('child_removed', removeIndex);
 
 
- 
+
 // Event functions
 function addOrUpdateObject(dataSnapshot) {
   // Get Firebase object
@@ -72,8 +72,6 @@ function addOrUpdateObject(dataSnapshot) {
       throw err;
     }
     console.log('Firebase<>Algolia object saved');
-    console.log(jfdjhfa);
-    bla.hell();
   });
 }
 
