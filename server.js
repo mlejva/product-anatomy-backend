@@ -38,7 +38,7 @@ var index = client.initIndex(ALGOLIA_INDEX);
 firebase.initializeApp(firebaseConfig);
 
 var fb = firebase.database().ref(FIREBASE_DATABASE_REF);
-
+var newItems = false;
 
 // Console logs
 console.log('==============\n');
@@ -56,10 +56,15 @@ fb.on('child_added', addOrUpdateObject);
 fb.on('child_changed', addOrUpdateObject);
 fb.on('child_removed', removeIndex);
 
-
+fb.once('value', function(dataSnapshot) {
+  console.log('Initial data indexation skipped.');
+  newItems = true;
+);
 
 // Event functions
 function addOrUpdateObject(dataSnapshot) {
+  if(!newItems) return; // Initial re-indexation cancelation
+
   // Get Firebase object
   var firebaseObject = dataSnapshot.val();
   console.log("initial child_added problem");
