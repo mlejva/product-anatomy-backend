@@ -6,7 +6,6 @@ function reindexIndex(dataSnapshot) {
   // Array of objects to index
   var objectsToIndex = [];
 
-
 // Create a temp index
 var tempIndexName = 'contacts_temp';
 var tempIndex = client.initIndex(tempIndexName);
