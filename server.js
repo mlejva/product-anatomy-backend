@@ -70,7 +70,6 @@ function addOrUpdateObject(dataSnapshot) {
   index.saveObject(firebaseObject, function(err, content) {
     if (err) {
       console.log(err);
-      console.log(content);
       throw err;
     }
   });
@@ -87,7 +86,4 @@ function removeIndex(dataSnapshot) {
     }
   });
 }
-
-
-
 /* ---------- */
