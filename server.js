@@ -27,10 +27,10 @@ var firebaseConfig = { // TODO heroku config
 /* ----- Initialization ----- */
 var firebase = require('firebase');
 var algoliasearch = require('algoliasearch');
-var client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_KEY); // error handling: algolia auth failed
-var index = client.initIndex(ALGOLIA_INDEX);                 // error handling: algolia index failed? maybe new will be created
+var client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_KEY);
+var index = client.initIndex(ALGOLIA_INDEX);
 
-firebase.initializeApp(firebaseConfig);                      // error handling: wrong config/firebase cant be reached
+firebase.initializeApp(firebaseConfig);
 
 var fb = firebase.database().ref(FIREBASE_DATABASE_REF);
 var newItems = false;
