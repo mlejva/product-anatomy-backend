@@ -36,7 +36,7 @@ var fb = firebase.database().ref(FIREBASE_DATABASE_REF);
 var newItems = false;
 
 // Console logs
-console.log('=================================\n');
+console.log('\n=================================\n');
 console.log('Algolia indexation node.js server\n');
 console.log('=================================');
 /* ---------- */
@@ -68,7 +68,7 @@ function addOrUpdateObject(dataSnapshot) {
 
   // Add or update object
   index.saveObject(firebaseObject, function(err, content) {
-    if (err) {
+    if (!err) {
       console.log('Error: cannot save object in Algolia\n' + err);
     }
   });
