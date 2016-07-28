@@ -46,16 +46,16 @@ fb.on('child_changed', addOrUpdateObject);
 fb.on('child_removed', removeIndex);
 
 // Load the firebase database once on start, to prevent reindexation of existing data at algolia
-/*
+
 fb.once('value', function(dataSnapshot) {
   console.log('Initial data indexation skipped');
   newItems = true;
 });
-*/
+
 
 // Event functions
 function addOrUpdateObject(dataSnapshot) {
-  //if(!newItems) return; // Initial re-indexation cancelation
+  if(!newItems) return; // Initial re-indexation cancelation
 
   // Get Firebase object
   var firebaseObject = dataSnapshot.val();
