@@ -53,6 +53,7 @@ fb.on('child_removed', removeIndex);
 fb.once('value', function(dataSnapshot) {
   console.log('Initial data indexation skipped');
   newItems = true;
+  fdfd();
 });
 
 
@@ -68,7 +69,7 @@ function addOrUpdateObject(dataSnapshot) {
 
   // Add or update object
   index.saveObject(firebaseObject, function(err, content) {
-    if (!err) {
+    if (err) {
       throw err;
     }
   });
@@ -80,7 +81,7 @@ function removeIndex(dataSnapshot) {
 
   // Remove the object from Algolia
   index.deleteObject(objectID, function(err, content) {
-    if (!err) {
+    if (err) {
       throw err;
     }
   });
