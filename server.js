@@ -69,8 +69,7 @@ function addOrUpdateObject(dataSnapshot) {
   // Add or update object
   index.saveObject(firebaseObject, function(err, content) {
     if (err) {
-      console.log(err);
-      throw err;
+      console.log('Error: cannot save object in Algolia\n' + err);
     }
   });
 }
@@ -82,7 +81,7 @@ function removeIndex(dataSnapshot) {
   // Remove the object from Algolia
   index.deleteObject(objectID, function(err, content) {
     if (err) {
-      throw err;
+      console.log('Error: cannot delete object in Algolia\n' + err);
     }
   });
 }
