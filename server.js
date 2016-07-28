@@ -71,6 +71,7 @@ function addOrUpdateObject(dataSnapshot) {
     if (err) {
       throw err;
     }
+    console.log(content);
   });
 }
 
