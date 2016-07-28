@@ -53,7 +53,6 @@ fb.on('child_removed', removeIndex);
 fb.once('value', function(dataSnapshot) {
   console.log('Initial data indexation skipped');
   newItems = true;
-  fdfd();
 });
 
 
@@ -70,6 +69,8 @@ function addOrUpdateObject(dataSnapshot) {
   // Add or update object
   index.saveObject(firebaseObject, function(err, content) {
     if (err) {
+      console.log(err);
+      console.log(content);
       throw err;
     }
   });
@@ -86,4 +87,7 @@ function removeIndex(dataSnapshot) {
     }
   });
 }
+
+
+
 /* ---------- */
