@@ -53,7 +53,6 @@ fb.on('child_removed', removeIndex);
 fb.once('value', function(dataSnapshot) {
   console.log('Initial data indexation skipped');
   newItems = true;
-  vadfsfdf();
 });
 
 
