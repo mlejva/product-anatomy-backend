@@ -2,10 +2,6 @@
 // Algolia indexation node.js server
 // =============================================================================
 
-// To REINDEX DATABASE
-
-// To IMPORT EXISTING DATA
-
 
 
 /* ----- Constants ----- */
@@ -42,24 +38,24 @@ console.log('=================================');
 /* ---------- */
 
 
-/* ----- Listen for changes to Firebase data ----- */
 
+/* ----- Listen for changes to Firebase data ----- */
 // Firebase event listeners
 fb.on('child_added', addOrUpdateObject);
 fb.on('child_changed', addOrUpdateObject);
 fb.on('child_removed', removeIndex);
 
 // Load the firebase database once on start, to prevent reindexation of existing data at algolia
+/*
 fb.once('value', function(dataSnapshot) {
   console.log('Initial data indexation skipped');
   newItems = true;
 });
-
-
+*/
 
 // Event functions
 function addOrUpdateObject(dataSnapshot) {
-  if(!newItems) return; // Initial re-indexation cancelation
+  //if(!newItems) return; // Initial re-indexation cancelation
 
   // Get Firebase object
   var firebaseObject = dataSnapshot.val();
@@ -68,7 +64,7 @@ function addOrUpdateObject(dataSnapshot) {
 
   // Add or update object
   index.saveObject(firebaseObject, function(err, content) {
-    if (!err) {
+    if (err) {
       console.log('Error: cannot save object in Algolia\n' + err);
     }
   });
